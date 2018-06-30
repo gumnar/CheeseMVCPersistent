@@ -21,7 +21,7 @@ namespace CheeseMVC.Controllers
         public IActionResult Index()
         {
             IList<Cheese> cheeses = context.Cheeses.Include(c => c.Category).ToList();
-
+            ViewBag.Title = "All Cheeses";
             return View(cheeses);
         }
 

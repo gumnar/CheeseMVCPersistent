@@ -25,6 +25,7 @@ namespace CheeseMVC.Controllers
         public IActionResult Index()
         {
             IList<Menu> menus = context.Menus.ToList();
+            ViewBag.Title = "All Menus";
             return View(menus);
         }
 
@@ -105,7 +106,7 @@ namespace CheeseMVC.Controllers
             if (existingItems.Count != 0)
             {
                 // TODO : Throw an error indicating that this relationship already exists
-                return View(addMenuItemViewModel);
+                return RedirectToAction("AddItem", addMenuItemViewModel.MenuID);
             }
 
             CheeseMenu newCheeseMenu = new CheeseMenu
