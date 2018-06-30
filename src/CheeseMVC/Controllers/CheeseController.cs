@@ -77,5 +77,36 @@ namespace CheeseMVC.Controllers
 
             return Redirect("/");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            IEnumerable<CheeseCategory> categories = context.Categories.ToList();
+            Cheese cheese = context.Cheeses.Single(chs => chs.ID == id);
+
+            EditCheeseViewModel editCheeseViewModel = new EditCheeseViewModel(categories, cheese);
+            return View(editCheeseViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(EditCheeseViewModel editCheeseViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(editCheeseViewModel);
+            }
+
+            // Get the cheese that we are modifying
+            Cheese changedCheese = context.Cheeses.Single(chs => chs.ID == editCheeseViewModel.CheeseID);
+
+            // Apply modifications to the object and save
+            changedCheese.Name = editCheeseViewModel.Name;
+            changedCheese.Description = editCheeseViewModel.Description;
+            changedCheese.CategoryID = editCheeseViewModel.CategoryID;
+
+            context.SaveChanges();
+
+            return Redirect("/Cheese");
+        }
     }
 }
