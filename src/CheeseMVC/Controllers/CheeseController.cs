@@ -29,6 +29,7 @@ namespace CheeseMVC.Controllers
         {
             IEnumerable<CheeseCategory> categories = context.Categories.ToList();
             AddCheeseViewModel addCheeseViewModel = new AddCheeseViewModel(categories);
+            ViewBag.Title = "Add Cheese";
             return View(addCheeseViewModel);
         }
 

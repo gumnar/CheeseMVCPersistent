@@ -65,7 +65,7 @@ namespace CheeseMVC.Controllers
             List <CheeseMenu> items = context
                 .CheeseMenus
                 .Include(item => item.Cheese)
-                .Where(cm => cm.CheeseID == id)
+                .Where(cm => cm.MenuID == id)
                 .ToList();
 
             ViewMenuViewModel viewMenuViewModel = new ViewMenuViewModel
