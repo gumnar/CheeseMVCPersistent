@@ -9,7 +9,7 @@
 
     <label asp-for="Cheeses"></label>
     <div class="form-group">
-        <select asp-for="CheeseID" asp-items="Model.Cheeses"></select>
+        <select class="form-control" asp-for="CheeseID" asp-items="Model.Cheeses"></select>
         <span asp-validation-for="CheeseID"></span>
     </div>
     <input type="hidden" name="MenuID" value="@Model.Menu.ID" />
