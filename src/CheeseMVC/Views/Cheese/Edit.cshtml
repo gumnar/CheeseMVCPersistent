@@ -17,7 +17,7 @@
 
     <div class="form-group">
         <label asp-for="CategoryID"></label>
-        <select asp-for="CategoryID" asp-items="Model.Categories"></select>
+        <select class="form-control" asp-for="CategoryID" asp-items="Model.Categories"></select>
     </div>
     <input type="hidden" name="CheeseID" value="@Model.CheeseID" />
 
